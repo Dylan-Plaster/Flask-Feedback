@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% block title %} Register new user: {% endblock %} {%
-block content %}
+{% extends 'base.html' %} {% block title %} {{message}} {% endblock %} {% block
+content %}
 <form method="POST">
   {{form.hidden_tag()}} {% for field in form if field.widget.input_type !=
   'hidden' %}
@@ -11,6 +11,13 @@ block content %}
   </p>
 
   {% endfor %}
-  <button type="submit" class="btn btn-info">Register</button>
+  <div class="d-inline">
+    <button type="submit" class="btn btn-success mb-3">Submit</button>
+    {% if message == 'Register new user:'%}
+    <a class="btn btn-info mb-3" href="/login">Login</a>
+    {% else %}
+    <a href="/register" class="btn btn-info mb-3">Register</a>
+    {% endif %}
+  </div>
 </form>
 {% endblock %}

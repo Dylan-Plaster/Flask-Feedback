@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %}
+<b>{{user.username}}</b>
+{% endblock %} {% block content %}
+<div>
+  <p><b>Email:</b> {{user.email}}</p>
+  <p><b>First Name:</b> {{user.first_name}}</p>
+  <p><b>Last Name:</b> {{user.last_name}}</p>
+  <form method="POST" action="/users/{{user.username}}/delete" class="d-inline">
+    <button type="submit" class="btn btn-danger">Delete User</button>
+  </form>
+  <a href="/users/{{user.username}}/feedback/add" class="btn btn-info"
+    >New Feedback</a
+  >
+  <ul style="list-style-type: none">
+    {% for post in posts %}
+    <li>
+      <div class="border rounded my-4 p-1">
+        <h4 class="display-4 mx-2 mb-4"><b>{{post.title}}</b></h4>
+        <p class="mx-2">{{post.content}}</p>
+        <a href="/feedback/{{post.id}}/update" class="btn btn-info mx-1"
+          >Edit</a
+        >
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endblock %}

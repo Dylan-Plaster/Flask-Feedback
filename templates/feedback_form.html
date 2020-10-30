@@ -1,0 +1,16 @@
+{% extends 'base.html'%} {% block title %} New Feedback: {% endblock %} {% block
+content %}
+<form method="POST">
+  {{form.hidden_tag()}}
+
+  <p>
+    {{ form.title.label }} {{ form.title (class_= 'form-control')}} {% for error
+    in form.title.errors %}
+    <small class="form-text text-danger">{{ error }}</small> {% endfor %}
+    <div class="h-100">{{form.content.label }} {{ form.content(class_="form-control form-control-lg
+    h-100 w-100", rows=7)}}</div> {% for error in form.content.errors %}
+    <small class="form-text text-danger">{{ error }}</small> {% endfor %}
+  </p>
+  <button type="submit" class="btn btn-success btn-block btn-lg mb-3">Submit</button>
+</form>
+{% endblock %}
